@@ -1,0 +1,30 @@
+[
+  {
+    "id": "claim-001",
+    "claim": "Water boils at 100 degrees Celsius under standard atmospheric pressure.",
+    "expected_assessment": "SUPPORTED",
+    "description": "Thermodynamic physical chemistry law confirmed by NIST, IAPWS, and fundamental physics benchmarks.",
+    "category": "Science & Physics"
+  },
+  {
+    "id": "claim-002",
+    "claim": "Vaccines contain microchips to secretly track citizens.",
+    "expected_assessment": "CONTRADICTED",
+    "description": "Widely circulated viral rumor refuted by microscopic spectroscopy, physical needle dimensions, and health regulatory bodies.",
+    "category": "Health & Fact Checking"
+  },
+  {
+    "id": "claim-003",
+    "claim": "Drinking coffee significantly reduces the risk of heart disease.",
+    "expected_assessment": "MIXED",
+    "description": "Observational cohort studies show modest long-term benefits for moderate filtered coffee, but clinical trials show blood pressure spikes, lipid increases from cafestol, and adverse effects in slow metabolizers.",
+    "category": "Nutrition & Cardiology"
+  },
+  {
+    "id": "claim-004",
+    "claim": "Extraterrestrial beings established a secret hyper-quantum base beneath Mount Vinson in 1947.",
+    "expected_assessment": "INSUFFICIENT_EVIDENCE",
+    "description": "Speculative claim lacking any verifiable empirical documentation or peer-reviewed polar scientific literature.",
+    "category": "Unsubstantiated Speculation"
+  }
+]

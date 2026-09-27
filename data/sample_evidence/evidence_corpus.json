@@ -1,0 +1,82 @@
+[
+  {
+    "id": "doc-001",
+    "title": "Thermodynamics of Phase Transitions: Boiling Point of Water at Atmospheric Pressure",
+    "source": "National Bureau of Standards / NIST Journal of Physical Chemistry",
+    "url": "https://www.nist.gov/data/thermodynamics-water-boiling",
+    "text": "Under standard atmospheric pressure defined as 1 atmosphere (101.325 kPa or 760 mmHg), the boiling point of pure water (H2O) is exactly 100 degrees Celsius (212 degrees Fahrenheit, 373.15 Kelvin). At this temperature, the vapor pressure of the liquid equals the surrounding atmospheric pressure, causing rapid vaporization throughout the liquid body. Variations in altitude and barometric pressure alter this equilibrium, but standard sea-level reference defines 100°C.",
+    "published_at": "2023-01-15"
+  },
+  {
+    "id": "doc-002",
+    "title": "Fundamental Principles of Water Boiling and Atmospheric Pressure",
+    "source": "International Association for the Properties of Water and Steam (IAPWS)",
+    "url": "https://www.iapws.org/guidelines/water-steam-properties",
+    "text": "Extensive empirical measurement confirms that at 1.01325 bar (standard sea level pressure), water undergoes liquid-vapor phase transition at 99.974°C under the ITS-90 scale, conventionally standardized in thermodynamic literature to 100.0 degrees Celsius. Above or below 1 atmosphere, the boiling temperature shifts predictably according to the Clausius-Clapeyron equation.",
+    "published_at": "2023-05-10"
+  },
+  {
+    "id": "doc-003",
+    "title": "Photovoltaic Cell Efficiency Benchmarks and Laboratory Records",
+    "source": "National Renewable Energy Laboratory (NREL)",
+    "url": "https://www.nrel.gov/pv/cell-efficiency.html",
+    "text": "Silicon-based commercial solar photovoltaic cells achieved average operational efficiencies between 20% and 24% under standard testing conditions (STC). In specialized laboratory tandem configurations combining perovskite and silicon layers, certified conversion efficiencies have surpassed 33%, demonstrating rapid multi-decade technological advancements in renewable generation.",
+    "published_at": "2024-02-18"
+  },
+  {
+    "id": "doc-004",
+    "title": "Comprehensive Chemical and Physical Composition of mRNA Vaccines: Debunking Microchip Claims",
+    "source": "Centers for Disease Control and Prevention (CDC) Fact Check Analysis",
+    "url": "https://www.cdc.gov/coronavirus/vaccines/facts-and-ingredients.html",
+    "text": "COVID-19 and common mRNA vaccines contain messenger RNA, lipids (fats such as polyethylene glycol), salts, sugars, and buffer solutions. They do not contain microchips, RFID transmitters, semiconductors, heavy magnetic metals, or any electronic tracking devices. The needles used for intramuscular vaccination are 22 to 25 gauge, with an internal diameter of approximately 0.26 to 0.41 mm, which is physically incapable of injecting functional microelectronic transceivers.",
+    "published_at": "2023-08-20"
+  },
+  {
+    "id": "doc-005",
+    "title": "Independent Laboratory Spectroscopic and Microscopic Analysis of Vaccine Vials",
+    "source": "World Health Organization (WHO) Vaccine Safety Committee",
+    "url": "https://www.who.int/news-room/feature-stories/vaccine-components-verification",
+    "text": "Rigorous mass spectrometry, electron microscopy, and chemical assays of commercial vaccine batches from Pfizer-BioNTech, Moderna, and Novavax identified zero electronic microdevices, silicon chips, or tracking hardware. Claims alleging that vaccines contain tracking microchips are biologically, physically, and technically baseless falsehoods without empirical substantiation.",
+    "published_at": "2023-11-12"
+  },
+  {
+    "id": "doc-006",
+    "title": "Fact Check: Viral Conspiracy Claim Regarding RFID Microchips in Vaccines",
+    "source": "Reuters Fact Checking Initiative",
+    "url": "https://www.reuters.com/fact-check/no-microchips-in-vaccines-2023",
+    "text": "Conspiracy theories asserting that government agencies or corporations planted tracking microchips inside vaccines have been thoroughly disproven. Optical microscope photographs shared on social media purporting to show tracking chips were verified to be sodium chloride salt crystals and cellulose fibers from lint. Biomedical engineers confirm wireless microchip transponders require antennas orders of magnitude larger than syringe needles.",
+    "published_at": "2023-09-04"
+  },
+  {
+    "id": "doc-007",
+    "title": "Cardiovascular Health Effects of Habitual Coffee Consumption: Long-Term Cohort Analysis",
+    "source": "American Heart Association / Journal of the American College of Cardiology",
+    "url": "https://www.acc.org/latest-in-cardiology/articles/coffee-cvd-risk",
+    "text": "A meta-analysis of prospective cohort studies involving over 450,000 participants observed that moderate consumption of filtered coffee (2 to 3 cups per day) was associated with a 10% to 15% reduction in the long-term incidence of coronary heart disease and all-cause cardiovascular mortality. The protective associations are hypothesized to stem from polyphenol antioxidants and chlorogenic acids improving endothelial function.",
+    "published_at": "2023-03-24"
+  },
+  {
+    "id": "doc-008",
+    "title": "Acute Hemodynamic Effects, Arrhythmia Risks, and Lipid Elevations from Coffee",
+    "source": "European Society of Cardiology (ESC) Clinical Bulletin",
+    "url": "https://www.escardio.org/guidelines/coffee-blood-pressure-lipids",
+    "text": "While moderate coffee shows observational benefits in healthy adults, excessive consumption (5+ cups daily) or consumption of unfiltered coffee (such as French press or boiled espresso) contains diterpenes (cafestol and kahweol) that significantly raise serum LDL cholesterol. Furthermore, acute caffeine intake induces transient systolic blood pressure spikes of 5 to 10 mmHg and exacerbates supraventricular arrhythmias in patients with uncontrolled hypertension or cardiovascular fragility.",
+    "published_at": "2023-07-19"
+  },
+  {
+    "id": "doc-009",
+    "title": "Systematic Review on Coffee, Arterial Stiffness, and Variable Genetic Metabolism",
+    "source": "British Medical Journal (BMJ) Evidence-Based Medicine",
+    "url": "https://ebm.bmj.com/content/coffee-cardiovascular-mixed-evidence",
+    "text": "Clinical evidence regarding whether coffee reduces heart disease remains mixed and contingent on individual genotype. Individuals with the CYP1A2 slow caffeine metabolizer gene variant experienced increased risk of myocardial infarction when consuming two or more cups daily, whereas fast metabolizers experienced cardiovascular protection. Consequently, clinical guidelines stop short of prescribing coffee as a therapeutic preventative measure.",
+    "published_at": "2024-01-30"
+  },
+  {
+    "id": "doc-010",
+    "title": "Antarctic Glaciology and Subglacial Topography Survey",
+    "source": "British Antarctic Survey (BAS) & National Science Foundation",
+    "url": "https://www.bas.ac.uk/polar-geology/antarctic-topography",
+    "text": "Radar sounding, seismic surveying, and ice core drilling across the Ellsworth Mountains and Mount Vinson in West Antarctica document continuous glacial accumulation, bedrock basalt, and subglacial hydrological networks. Historical scientific expeditions since 1935 maintain transparent meteorological, geological, and atmospheric monitoring stations under the Antarctic Treaty System.",
+    "published_at": "2022-12-05"
+  }
+]
