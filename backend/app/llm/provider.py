@@ -174,7 +174,11 @@ STRICT INSTRUCTIONS:
 4. If evidence is inadequate or assessment is INSUFFICIENT_EVIDENCE, state that clearly and refuse to guess.
 5. Provide a 2-3 paragraph objective, evidence-grounded explanation explaining why the evidence supports, contradicts, or leaves the claim mixed.
 """
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent?key={self.api_key}"
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent"
+        headers = {
+            "Content-Type": "application/json",
+            "x-goog-api-key": self.api_key
+        }
         payload = {
             "contents": [
                 {
@@ -189,7 +193,7 @@ STRICT INSTRUCTIONS:
         }
         try:
             async with httpx.AsyncClient(timeout=20.0) as client:
-                res = await client.post(url, json=payload)
+                res = await client.post(url, headers=headers, json=payload)
                 if res.status_code == 200:
                     data = res.json()
                     candidates = data.get("candidates", [])
@@ -197,9 +201,9 @@ STRICT INSTRUCTIONS:
                         parts = candidates[0].get("content", {}).get("parts", [])
                         if parts:
                             return parts[0].get("text", "").strip()
-                logger.warning(f"Gemini API returned {res.status_code}: {res.text[:200]}. Falling back to DemoLLMProvider.")
-        except Exception as e:
-            logger.error(f"Gemini call failed: {str(e)}. Falling back to DemoLLMProvider.")
+                logger.warning(f"Gemini API returned status {res.status_code}. Falling back to DemoLLMProvider.")
+        except Exception:
+            logger.error("Gemini request encountered a network or service error. Falling back to DemoLLMProvider.")
 
         # Fallback to local synthesizer if network or key fails
         return await DemoLLMProvider().generate_explanation(claim, assessment, confidence, evidence_items, classifier_result)

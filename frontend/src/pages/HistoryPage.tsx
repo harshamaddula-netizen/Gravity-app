@@ -31,12 +31,14 @@ export const HistoryPage: React.FC = () => {
   }, []);
 
   const handleOpenItem = async (id: string) => {
+    if (loadingItem) return;
     setLoadingItem(true);
+    setError(null);
     try {
       const fullRecord = await api.getHistoryItem(id);
       setSelectedResult(fullRecord);
     } catch (err: any) {
-      alert(err.message || 'Could not load verification details.');
+      setError(err.message || 'Could not load verification details.');
     } finally {
       setLoadingItem(false);
     }
@@ -53,9 +55,10 @@ export const HistoryPage: React.FC = () => {
         setSelectedResult(null);
       }
     } catch (err: any) {
-      alert(err.message || 'Failed to delete record.');
+      setError(err.message || 'Failed to delete record.');
     }
   };
+
 
   if (selectedResult) {
     return (
@@ -160,7 +163,7 @@ export const HistoryPage: React.FC = () => {
               onClick={() => handleOpenItem(item.id)}
               className="glass-card hover:bg-slate-900/80 p-4 sm:p-5 rounded-xl border border-slate-800/80 hover:border-slate-700 transition-all cursor-pointer group flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm"
             >
-              <div className="space-y-2 max-w-2xl">
+              <div className="space-y-2 max-w-2xl min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2.5">
                   <AssessmentBadge assessment={item.assessment} size="sm" />
                   <span className="text-xs font-mono text-slate-400 font-medium">
@@ -172,11 +175,11 @@ export const HistoryPage: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 className="text-sm sm:text-base font-semibold text-white group-hover:text-brand-300 transition-colors leading-snug line-clamp-2">
+                <h3 className="text-sm sm:text-base font-semibold text-white group-hover:text-brand-300 transition-colors leading-snug line-clamp-2 break-words">
                   "{item.claim}"
                 </h3>
 
-                <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+                <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed break-words">
                   {item.explanation}
                 </p>
               </div>

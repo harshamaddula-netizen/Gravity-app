@@ -77,34 +77,48 @@ See [`docs/architecture.md`](docs/architecture.md) for full technical specificat
 - Python 3.11+
 - Node.js v18+ & npm
 
-### Clone & Navigate
-```bash
-git clone https://github.com/your-repo/truthlens-ai.git
-cd truthlens-ai
-```
+### How to Set Up the Project Locally
 
-### 1. Backend Setup
-```bash
-# Optional: create a virtual environment
-python -m venv venv
-# Windows:
-.\venv\Scripts\activate
-# Linux/macOS:
-source venv/bin/activate
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/harshamaddula-netizen/Gravity-app.git
+   cd Gravity-app
+   ```
 
-# Install dependencies
-pip install -r backend/requirements.txt
+2. **Create a local `.env` file from `.env.example`:**
+   ```bash
+   cp .env.example .env
+   # On Windows PowerShell:
+   # Copy-Item .env.example .env
+   ```
 
-# Copy environment variables
-cp .env.example .env
-```
+3. **Add your own API key locally:**
+   Open your local `.env` file and insert your personal API key (e.g. `OPENAI_API_KEY=your_key_here` or `GEMINI_API_KEY=your_key_here`).  
+   *(If no external API key is provided, TruthLens AI automatically operates in deterministic local `DEMO_MODE=true` with no external API calls required).*
 
-### 2. Frontend Setup
-```bash
-cd frontend
-npm install
-cd ..
-```
+4. **Install dependencies:**
+   ```bash
+   # Install Backend dependencies
+   pip install -r backend/requirements.txt
+
+   # Install Frontend dependencies
+   cd frontend
+   npm install
+   cd ..
+   ```
+
+5. **Run the development server:**
+   - **Terminal 1 (Backend API):**
+     ```bash
+     python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000 --reload
+     ```
+   - **Terminal 2 (Frontend UI):**
+     ```bash
+     cd frontend
+     npm run dev
+     ```
+   Open `http://localhost:5173` in your browser.
+
 
 ---
 

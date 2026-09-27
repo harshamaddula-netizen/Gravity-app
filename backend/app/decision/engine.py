@@ -31,9 +31,11 @@ class DecisionEngine:
         Returns:
             Tuple of (assessment_state, confidence, summary, caveat)
         """
-        supporting_count = sum(1 for item in analyzed_evidence if item.get("stance") == "SUPPORTING")
-        contradicting_count = sum(1 for item in analyzed_evidence if item.get("stance") == "CONTRADICTING")
-        unclear_count = sum(1 for item in analyzed_evidence if item.get("stance") == "UNCLEAR")
+        # Stance counts calculated strictly from analyzed_evidence array
+        supporting_count = sum(1 for item in analyzed_evidence if str(item.get("stance", "")).strip().upper() == "SUPPORTING")
+        contradicting_count = sum(1 for item in analyzed_evidence if str(item.get("stance", "")).strip().upper() == "CONTRADICTING")
+        # Any evidence item with UNCLEAR or invalid/missing status safely falls into unclear count
+        unclear_count = len(analyzed_evidence) - (supporting_count + contradicting_count)
 
         summary = EvidenceSummary(
             supporting=supporting_count,

@@ -15,9 +15,12 @@ export const LandingPage: React.FC = () => {
   const [validationError, setValidationError] = useState<string | null>(null);
 
   const handleVerify = async (claimToVerify?: string) => {
+    // Prevent duplicate concurrent requests
+    if (loading) return;
+
     const textToVerify = (claimToVerify !== undefined ? claimToVerify : claim).trim();
 
-    // Validation
+    // Client-side validation
     if (!textToVerify) {
       setValidationError('Please enter a factual claim or headline to verify.');
       return;
@@ -31,32 +34,40 @@ export const LandingPage: React.FC = () => {
       return;
     }
 
+    // Reset previous errors and stale result data
     setValidationError(null);
     setError(null);
+    setResult(null);
     setLoading(true);
 
     try {
       const response = await api.verifyClaim(textToVerify);
       setResult(response);
     } catch (err: any) {
+      // Ensure failure never leaves fake or stale results displayed
+      setResult(null);
       if (err instanceof ApiError) {
         setError(err.message);
       } else {
         setError('An unexpected error occurred while communicating with the verification service.');
       }
     } finally {
+      // Guarantee button and form loading state is restored
       setLoading(false);
     }
   };
 
   const handleSelectDemoClaim = (demoText: string) => {
+    if (loading) return;
     setClaim(demoText);
     setValidationError(null);
     setError(null);
+    setResult(null);
     handleVerify(demoText);
   };
 
   const handleClear = () => {
+    if (loading) return;
     setClaim('');
     setValidationError(null);
     setError(null);
@@ -70,6 +81,9 @@ export const LandingPage: React.FC = () => {
           onReset={() => {
             setResult(null);
             setClaim('');
+            setError(null);
+            setValidationError(null);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           }} 
         />
       </main>
@@ -102,7 +116,7 @@ export const LandingPage: React.FC = () => {
               Paste a claim or headline below
             </label>
             <div className="flex items-center gap-3">
-              {claim && (
+              {claim && !loading && (
                 <button
                   type="button"
                   onClick={handleClear}
@@ -126,14 +140,20 @@ export const LandingPage: React.FC = () => {
               setClaim(e.target.value);
               if (validationError) setValidationError(null);
             }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                e.preventDefault();
+                handleVerify();
+              }
+            }}
             placeholder="e.g. Water boils at 100 degrees Celsius under standard atmospheric pressure..."
             disabled={loading}
-            className="w-full bg-slate-900/90 text-white placeholder-slate-500 border border-slate-700/80 rounded-xl p-4 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all resize-y min-h-[110px]"
+            className="w-full bg-slate-900/90 text-white placeholder-slate-500 border border-slate-700/80 rounded-xl p-4 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all resize-y min-h-[110px] disabled:opacity-60 disabled:cursor-not-allowed"
           />
 
           {/* Validation Error */}
           {validationError && (
-            <div className="mt-2.5 flex items-center gap-2 text-rose-400 text-xs bg-rose-500/10 border border-rose-500/20 p-2.5 rounded-lg">
+            <div className="mt-2.5 flex items-center gap-2 text-rose-400 text-xs bg-rose-500/10 border border-rose-500/20 p-2.5 rounded-lg animate-in fade-in duration-200">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{validationError}</span>
             </div>
@@ -141,20 +161,21 @@ export const LandingPage: React.FC = () => {
 
           {/* Backend / Network Error */}
           {error && (
-            <div className="mt-3 flex items-start justify-between gap-3 text-rose-300 text-xs bg-rose-500/10 border border-rose-500/30 p-3.5 rounded-xl">
+            <div className="mt-3 flex items-start justify-between gap-3 text-rose-300 text-xs bg-rose-500/10 border border-rose-500/30 p-3.5 rounded-xl animate-in fade-in duration-200">
               <div className="flex items-start gap-2">
                 <AlertCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-rose-200">Verification Request Failed</p>
-                  <p className="text-rose-300/90 mt-0.5">{error}</p>
+                  <p className="text-rose-300/90 mt-0.5 leading-relaxed">{error}</p>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={() => handleVerify()}
-                className="shrink-0 flex items-center gap-1 px-2.5 py-1 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 font-semibold border border-rose-500/40 transition-colors"
+                disabled={loading}
+                className="shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 font-semibold border border-rose-500/40 transition-colors"
               >
-                <RefreshCw className="w-3 h-3" />
+                <RefreshCw className={`w-3 h-3 ${loading ? 'animate-spin' : ''}`} />
                 <span>Retry</span>
               </button>
             </div>

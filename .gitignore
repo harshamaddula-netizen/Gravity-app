@@ -8,21 +8,31 @@ env/
 venv/
 ENV/
 .pytest_cache/
+backend/.pytest_cache/
 *.db
 *.sqlite3
 
 # Node / Frontend
 node_modules/
 frontend/node_modules/
+dist/
 frontend/dist/
+build/
 .DS_Store
+*.log
+npm-debug.log*
 
-# Secrets & Environment
+# Secrets & Environment variables
 .env
-.env*.local
+.env.*
 !.env.example
+*.pem
+*.key
+*.cert
 
-# IDE & OS
+# IDE & OS temporary files
 .vscode/
 .idea/
+*.swp
+*.swo
 Thumbs.db
